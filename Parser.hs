@@ -1,5 +1,5 @@
 module Parser where
-import Monad (liftM)
+import Control.Monad (liftM)
 import Text.ParserCombinators.Parsec hiding (satisfy)
 import Text.ParserCombinators.Parsec.Expr
 import Lexer

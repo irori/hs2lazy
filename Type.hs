@@ -10,8 +10,8 @@
 --  modified by irori <irorin@gmail.com>
 
 module Type where
-import List(nub, (\\), intersect, union, partition)
-import Monad(msum)
+import Data.List(nub, (\\), intersect, union, partition)
+import Control.Monad(msum)
 import Syntax
 
 enumId  :: Int -> Id

@@ -1,6 +1,6 @@
 module Static where
-import List(union, partition, (\\))
-import qualified List(find)
+import Data.List(union, partition, (\\))
+import qualified Data.List(find)
 import Syntax
 import qualified Parser as P
 import qualified Type as T

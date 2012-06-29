@@ -1,6 +1,6 @@
 module Syntax where
-import Char(chr, ord)
-import List(find, nub, union, intersect, (\\))
+import Data.Char(chr, ord)
+import Data.List(find, nub, union, intersect, (\\))
 import SCC
 
 type Id  = String

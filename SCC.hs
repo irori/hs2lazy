@@ -1,7 +1,7 @@
 module SCC (scc) where
-import List (elemIndex)
-import Monad (when)
-import Array
+import Data.List (elemIndex)
+import Control.Monad (when)
+import Data.Array
 
 data SM s a = SM (s -> (a, s))
 

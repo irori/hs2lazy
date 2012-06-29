@@ -2,7 +2,7 @@
 {
 module Lexer where
 import Numeric (readOct, readHex)
-import Char (isUpper, isLower)
+import Data.Char (isUpper, isLower)
 import qualified Text.ParserCombinators.Parsec.Pos as Pos
 }
 

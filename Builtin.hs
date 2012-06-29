@@ -1,6 +1,6 @@
 module Builtin where
-import List (find)
-import Char (ord)
+import Data.List (find)
+import Data.Char (ord)
 import Syntax
 
 churchnums = [

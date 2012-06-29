@@ -1,6 +1,6 @@
 module Main where
-import IO
-import System
+import System.Environment
+import System.IO
 import Syntax
 import qualified Lexer as L
 import qualified Parser as P
