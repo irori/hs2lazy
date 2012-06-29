@@ -341,7 +341,7 @@ tiExpr ce env (Case e pses) = do (ps, te, e') <- tiExpr ce env e
 tiExpr ce env (Lambda alt)  = do (ps, t, alt') <- tiAlt ce env alt
                                  return (ps, t, Lambda alt')
 
---  e :: sc => let v :: sc; v = e in v ¤ÈÊÑ´¹¤·¤¿¤È¤­¤ÈÆ±¤¸¤Ë¤Ê¤Ã¤Æ¤ë?
+--  e :: sc => let v :: sc; v = e in v ã¨å¤‰æ›ã—ãŸã¨ãã¨åŒã˜ã«ãªã£ã¦ã‚‹?
 tiExpr ce env (ESign e sc) =
     do (qs :=> t)   <- freshInst sc
        (ps, te, e') <- tiExpr ce env e

@@ -277,7 +277,7 @@ aexp = do { i <- qvar; return (Var i) }
           if length es == 1 then return (head es) else return (Tuple es)
    <|> do es <- bracketList expr
           return (foldr cons (Con "[]") es)
-   -- ‚Ü‚¾‚¢‚ë‚¢‚ë‘«‚è‚È‚¢
+   -- ã¾ã ã„ã‚ã„ã‚è¶³ã‚Šãªã„
 
 alts :: HsParser [(Pat, Rhs)]
 alts = braceList alt

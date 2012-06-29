@@ -130,7 +130,7 @@ bindDefault f def
                       e <- f (Var v)
                       return $ Let (bind1 v def) e
     where simple _ = True
-{- ¤³¤ì¤Ç¤Ï¸úÎ¨°­¤¤ -- ¼°¤Î¥µ¥¤¥º¤ÇÊ¬¤±¤ë¤È¤«?
+{- ã“ã‚Œã§ã¯åŠ¹ç‡æ‚ªã„ -- å¼ã®ã‚µã‚¤ã‚ºã§åˆ†ã‘ã‚‹ã¨ã‹?
     where simple (Var _) = True
           simple (Lit _) = True
           simple (Con _) = True
