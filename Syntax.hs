@@ -133,6 +133,10 @@ eCons = Con con
     where Just con = find (\c -> conName c == ":") preludeConstrs
 eNil = Con con
     where Just con = find (\c -> conName c == "[]") preludeConstrs
+pCons x y = PCon con [x, y]
+    where Just con = find (\c -> conName c == ":") preludeConstrs
+pNil = PCon con []
+    where Just con = find (\c -> conName c == "[]") preludeConstrs
 
 infixr      4 `fn`
 fn         :: Type -> Type -> Type

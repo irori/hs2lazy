@@ -124,7 +124,7 @@ anPat dt@(_, cs) (P.PCon i ps) =
 anPat dt (P.PTuple ps) = PCon (tupcon (length ps)) (map (anPat dt) ps)
 anPat dt (P.PInt n) = PLit (LitInt n)
 anPat dt (P.PChar c) = PLit (LitChar c)
-anPat dt (P.PStr s) = PLit (LitStr s)
+anPat dt (P.PStr s) = foldr (\c e -> pCons (PLit $ LitChar [c]) e) pNil s
 anPat dt (P.AsPat i p) = PAs i (anPat dt p)
 anPat dt P.Wildcard = PWildcard
 
