@@ -12,7 +12,7 @@ $l = [a-zA-Z]				-- letters
 $d = 0-9				-- digits
 $i = [$l$d\_\']				-- identifier character
 $s = [!\#\$\%&\*\+\-\.\/:\<=>\?@\\\|\~]	-- symbolic char
-@e = \\([abfnrtv\"\\]|$d{1,3})		-- character escape
+@e = \\([abfnrtv\"\'\\]|$d{1,3})	-- character escape
 @c = $printable#[\"\\]|@e		-- string character
 @g = \\$white+\\			-- string gap
 
