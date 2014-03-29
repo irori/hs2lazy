@@ -225,6 +225,8 @@ ide' "type" = TokenType
 ide' "class" = TokenClass
 ide' "instance" = TokenInstance
 ide' "where" = TokenWhere
+ide' "import" = TokenImport
+ide' "hiding" = TokenHiding
 ide' s@(c:_)
     | isUpper c = TokenConId s
     | isLower c = TokenId s
@@ -264,6 +266,8 @@ data Token = TokenId String
 	   | TokenClass
 	   | TokenInstance
 	   | TokenWhere
+           | TokenImport
+           | TokenHiding
 
 	   | TokenDotDot
 	   | TokenCoco

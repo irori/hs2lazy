@@ -9,6 +9,7 @@ data TopDecl = Decl Decl
 	     | TypeDecl (String, [String], Type)
              | ClassDecl (Context, String, Type, [Decl])
              | InstDecl (Context, String, Type, [Decl])
+             | ImpDecl
 	       deriving Show
 
 type Constr = (String, [Type])
@@ -64,7 +65,14 @@ program :: HsParser [TopDecl]
 program = braceList topdecl
 
 topdecl :: HsParser TopDecl
-topdecl = datadecl <|> typedecl <|> classdecl <|> instdecl <|> liftM Decl decl
+topdecl = datadecl <|> typedecl <|> classdecl <|> instdecl <|> liftM Decl decl <|> impdecl
+
+impdecl :: HsParser TopDecl
+impdecl = do tokenImport
+             _ <- sepBy1 conid varsym
+             skipMany tokenHiding
+             skipMany (parenList var)
+             return ImpDecl
 
 datadecl :: HsParser TopDecl
 datadecl = do tokenData
@@ -451,6 +459,8 @@ tokenType = hsToken TokenType
 tokenClass = hsToken TokenClass
 tokenInstance = hsToken TokenInstance
 tokenWhere = hsToken TokenWhere
+tokenImport = hsToken TokenImport
+tokenHiding = hsToken TokenHiding
 
 tokenDotDot = hsToken TokenDotDot
 tokenCoco = hsToken TokenCoco
