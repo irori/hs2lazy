@@ -5,5 +5,4 @@ tarai x y z
                         (tarai (y-1) z x)
                         (tarai (z-1) x y)
 
-main :: Stream -> Stream
-main stdin = toStream $ show $ tarai 122 52 10
+main = putStr $ show $ tarai 122 52 10

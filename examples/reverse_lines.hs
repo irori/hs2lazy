@@ -1,2 +1,1 @@
-main :: Stream -> Stream
-main stdin = toStream $ unlines $ reverse $ lines $ fromStream stdin
+main = interact (unlines . reverse . lines)

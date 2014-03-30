@@ -40,6 +40,9 @@ showString = (++)
 ($) :: (a -> b) -> a -> b
 ($) f x = f x
 
+fst :: (a, b) -> a
+fst (a, b) = a
+
 map :: (a -> b) -> [a] -> [b]
 map f (x:xs) = f x : map f xs
 map f []     = []
@@ -108,6 +111,14 @@ foldr f z xs = if null xs
 	       then z
 	       else f (head xs) (foldr f z (tail xs))
 
+elem :: Eq a => a -> [a] -> Bool
+elem e [] = False
+elem e (x:xs) = e == x || elem e xs
+
+lookup :: Eq a => a -> [(a, b)] -> Maybe b
+lookup x ((key, val) : ys) = if x == key then Just val else lookup x ys
+lookup x [] = Nothing
+
 compare :: Int -> Int -> Ordering
 compare x y = if x == y then EQ else if x <= y then LT else GT
 
@@ -159,13 +170,19 @@ otherwise :: Bool
 otherwise = True
 
 
-data Stream = Cons Char Stream
+data Stream = Stream Char Stream
 
 eof = chr 256
 
 fromStream :: Stream -> String
-fromStream (Cons c cs) = if 256 <= ord c then [] else c : fromStream cs
+fromStream (Stream c cs) = if 256 <= ord c then [] else c : fromStream cs
 
 toStream :: String -> Stream
-toStream [] = Cons eof (toStream [])
-toStream (c:cs) = Cons c (toStream cs)
+toStream [] = Stream '\n' $ Stream eof (toStream [])
+toStream (c:cs) = Stream c (toStream cs)
+
+putStr :: String -> Stream -> Stream
+putStr s _ = toStream s
+
+interact :: (String -> String) -> Stream -> Stream
+interact f = toStream . f . fromStream

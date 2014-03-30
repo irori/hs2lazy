@@ -6,4 +6,4 @@ fb n | mod n 15 == 0 = "FizzBuzz"
 fizzbuzz n | n > 100 = []
            | otherwise = fb n ++ '\n' : fizzbuzz (n+1)
 
-main input = toStream $ fizzbuzz 1
+main = putStr $ fizzbuzz 1

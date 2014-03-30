@@ -1,7 +1,6 @@
-even :: [a] -> [a]
-even [] = []
-even [x] = []
-even (x:y:z) = y : even z
+evenList :: [a] -> [a]
+evenList [] = []
+evenList [x] = []
+evenList (x:y:z) = y : evenList z
 
-main :: Stream -> Stream
-main stdin = toStream $ unlines $ even $ lines $ fromStream stdin
+main = interact (unlines . evenList . lines)
