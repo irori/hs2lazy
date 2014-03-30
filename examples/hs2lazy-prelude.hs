@@ -43,6 +43,9 @@ showString = (++)
 fst :: (a, b) -> a
 fst (a, b) = a
 
+snd :: (a, b) -> b
+snd (a, b) = b
+
 map :: (a -> b) -> [a] -> [b]
 map f (x:xs) = f x : map f xs
 map f []     = []

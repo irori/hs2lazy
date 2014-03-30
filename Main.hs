@@ -32,7 +32,12 @@ main = do source <- argf
 	  let (p, as, p', e, ce) = compile source in
 	      do --hPutStrLn stderr (show p')
                  --mapM_ (hPutStrLn stderr . show) as
-		 putStrLn $ map toLower $ show e
+		 putStrLn $ insertNewline 80 $ map toLower $ show e
+
+insertNewline :: Int -> String -> String
+insertNewline n [] = []
+insertNewline n s = let (line, s') = splitAt n s
+                    in (line ++ '\n' : insertNewline n s')
 
 argf :: IO String
 argf = do argv <- getArgs
