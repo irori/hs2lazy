@@ -639,9 +639,9 @@ addCoreClasses  = foldl1 (<:>) [
 --   addClass "Functor" [] [],
 --   addClass "Monad" [] [],
    addInst [] (IsIn "Eq" tInt) (Var "EqInt"),
-   addImpls [("EqInt", [([], Rhs $ tuple [Var "primEq", Var "primNeq"])])],
+   addImpls [("EqInt", [([], Rhs $ tuple [Var "&eq", Var "&neq"])])],
    addInst [] (IsIn "Eq" tChar) (Var "EqChar"),
-   addImpls [("EqChar", [([], Rhs $ tuple [Var "primEq", Var "primNeq"])])]
+   addImpls [("EqChar", [([], Rhs $ tuple [Var "&eq", Var "&neq"])])]
   ]
     where a = TVar (Tyvar "a" Star)
 

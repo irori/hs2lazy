@@ -145,7 +145,7 @@ matchLit us qs def =
 matchLitClause :: [Id] -> Expr -> (Literal, [Equation]) -> PatComp (Expr, Expr)
 matchLitClause (u:us) def (lit, qs) =
     do e <- match us [(ps,rhs) | (_:ps,rhs)<-qs] def
-       return (ap (Var "primEq") [Var u, Lit lit], e)
+       return (ap (Var "&eq") [Var u, Lit lit], e)
 
 groupLit :: [Equation] -> [(Literal, [Equation])]
 groupLit [] = []
