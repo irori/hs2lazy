@@ -1,4 +1,5 @@
 module Main where
+import Data.Char (toLower)
 import System.Environment
 import System.IO
 import Syntax
@@ -31,7 +32,7 @@ main = do source <- argf
 	  let (p, as, p', e, ce) = compile source in
 	      do --hPutStrLn stderr (show p')
                  --mapM_ (hPutStrLn stderr . show) as
-		 putStrLn (show e)
+		 putStrLn $ map toLower $ show e
 
 argf :: IO String
 argf = do argv <- getArgs
