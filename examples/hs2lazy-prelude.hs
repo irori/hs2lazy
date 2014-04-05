@@ -189,3 +189,11 @@ putStr s _ = toStream s
 
 interact :: (String -> String) -> Stream -> Stream
 interact f = toStream . f . fromStream
+
+
+-- Mock IO operations
+(>>) :: a -> b -> b
+(>>) x y = y
+hSetBuffering x y = x
+stdout = 1
+data Buffering = NoBuffering
